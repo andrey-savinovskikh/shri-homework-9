@@ -1,4 +1,10 @@
 module.exports = class {
+  [Symbol.toStringTag] = '^_^';
+
+  [Symbol.iterator]() {
+    return this.storage.values();
+  }
+
   constructor(initArray) {
     this.storage = [];
 
@@ -28,10 +34,6 @@ module.exports = class {
   has = (val) => {
     return this.storage.includes(val);
   };
-
-  [Symbol.iterator]() {
-    return this.storage.values();
-  }
 
   values = () => {
     return Object.values(this.storage)[Symbol.iterator]();
